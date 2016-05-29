@@ -1,0 +1,10 @@
+*.swp
+
+src/mupdf-1.2-source/
+src/pdfview/fwlib
+src/pdfview/mupdf
+src/pdfview/mupdfd
+src/pdfview/mupdfr
+src/pdfview/mupdfview
+src/pdfview/sdk
+src/pdfview/system

@@ -15,6 +15,27 @@ Based on work of Denis Dadimov <denisdadimov@mail.ru> and <damiano.rullo@gmail.c
 2. Copy system/bin/extensions.cfg to system/config OR append contents if there is one already
 3. Reboot device
 
+## Building
+##### Compile MuPDF
+- Download MuPDF 1.2
+- Add pocketbook section to Makerules file:
+
+```
+ifeq "$(OS)" "pocketbook"
+CC = arm-none-linux-gnueabi-gcc
+LD = arm-none-linux-gnueabi-gcc
+AR = arm-none-linux-gnueabi-ar
+CFLAGS += -s -fsigned-char -Wno-format-y2k -Wno-unused-parameter
+CROSSCOMPILE=yes
+NOX11=yes
+endif
+```
+- Debug build for emulator: `make` - creates mupdf/build/debug folder
+- Release build: `make OS=pocketbook build=release` - creates mupdf/build/release
+
+##### Compile app
+build-scripts makepc.sh and makearm.sh assume that pdfview folder contains symlinks fwlib, mupdf, mupdfd (->mupdf/build/debug), mupdfr (->mupdf/build/release), sdk (->FRSCSDK)
+
 ## Short usage guide
 
 ### 1. Tool menu.
